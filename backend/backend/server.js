@@ -104,7 +104,19 @@ app.get("/sigaa", async (req, res) => {
     // =========================
     // 📊 EXTRAÇÃO FINAL LIMPA
     // =========================
-    const disciplinas = await page.evaluate(() => {
+    const result = await page.evaluate(() => {
+      // Extração do Nome do Aluno
+      const nomeElement = document.querySelector(".info-usuario .nome") ||
+                         document.querySelector(".usuario") ||
+                         document.querySelector("#painel-usuario .nome");
+
+      let nomeAluno = "Estudante";
+      if (nomeElement) {
+        nomeAluno = nomeElement.innerText.split("\n")[0].trim();
+        // Limpar prefixos comuns se existirem
+        nomeAluno = nomeAluno.replace("Bem vindo, ", "").replace("Usuário: ", "");
+      }
+
       const links = Array.from(document.querySelectorAll("a"));
       const raw = [];
 
@@ -156,10 +168,15 @@ app.get("/sigaa", async (req, res) => {
         }
       }
 
-      return Array.from(map.values());
+      return {
+        nomeAluno,
+        disciplinas: Array.from(map.values())
+      };
     });
 
-    console.log("📊 EXTRAÇÃO FINAL:", disciplinas.length);
+    const { nomeAluno, disciplinas } = result;
+
+    console.log("📊 EXTRAÇÃO FINAL:", disciplinas.length, "| Aluno:", nomeAluno);
 
     // =========================
     // 🧯 VALIDAÇÃO FINAL
@@ -171,6 +188,7 @@ app.get("/sigaa", async (req, res) => {
     res.json({
       status: "success",
       total: disciplinas.length,
+      nomeAluno,
       disciplinas
     });
 
