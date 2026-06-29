@@ -1,205 +1,110 @@
-# 🛰️ IFPA Orion
+<div align="center">
 
-Sistema acadêmico inteligente desenvolvido para estudantes do IFPA.
+# 🛰️ IFPA ORION
 
-O IFPA Orion é uma plataforma que complementa o SIGAA com uma interface moderna, organizada e orientada a dados, oferecendo dashboards, visualização acadêmica e ferramentas de produtividade.
-
----
-
-## 🎯 Objetivo do Projeto
-
-O objetivo do IFPA Orion é criar uma camada moderna sobre o sistema acadêmico SIGAA, permitindo:
-
-- Visualização clara da vida acadêmica
-- Dashboard de desempenho acadêmico
-- Organização de disciplinas e horários
-- Interface moderna, rápida e responsiva
-- Futuramente: integração com SIGAA via sessão autenticada do usuário (sem armazenar senha)
+### Sistema acadêmico inteligente para estudantes do IFPA
 
 ---
 
-## 🧠 Ideia Arquitetural
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![React](https://img.shields.io/badge/frontend-React-blue)
+![TypeScript](https://img.shields.io/badge/language-TypeScript-3178c6)
+![Node.js](https://img.shields.io/badge/backend-Node.js-green)
 
-O sistema segue uma arquitetura híbrida e modular:
-
-- Frontend principal em React + TypeScript + Vite
-- Backend em Node.js com Express
-- Estrutura preparada para evolução em microserviços
-- Integração futura com SIGAA via automação de sessão autenticada (modelo seguro sem persistência de credenciais)
+</div>
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## ✨ Sobre o projeto
 
-### Frontend
+O IFPA Orion é uma plataforma acadêmica moderna desenvolvida para melhorar a experiência dos estudantes do IFPA, funcionando como uma camada alternativa ao SIGAA.
+
+O objetivo é transformar dados acadêmicos em uma interface visual, simples e eficiente, com dashboards e ferramentas de acompanhamento de desempenho.
+
+---
+
+## 🎯 Objetivo
+
+- Criar uma visão clara da vida acadêmica
+- Construir dashboards interativos e inteligentes
+- Melhorar a organização de disciplinas e informações
+- Evoluir para integração segura com SIGAA via sessão autenticada
+- Desenvolver um sistema full stack moderno e escalável
+
+---
+
+## 🧠 Visão do sistema
+
+O IFPA Orion é um sistema em evolução contínua, pensado como:
+
+> Uma plataforma que transforma dados acadêmicos em experiência visual e produtividade.
+
+---
+
+## ⚙️ Tecnologias utilizadas
+
 - React
 - TypeScript
 - Vite
-- CSS puro / módulos CSS
-- Componentização avançada (Dashboard, Sidebar, Layout, Cards)
-
-### Backend
 - Node.js
 - Express
-- API REST (estrutura inicial)
-
-### Ferramentas
-- Git + GitHub (versionamento)
-- ESLint
-- Vite build system
+- CSS moderno modular
+- Git + GitHub
 
 ---
 
-## 📁 Estrutura Completa do Projeto
+## 📊 Estado atual do projeto
+
+🚧 Em desenvolvimento ativo
+
+✔ Estrutura frontend criada  
+✔ Dashboard inicial implementado  
+✔ Backend base configurado  
+✔ Componentização estruturada  
+✔ Projeto versionado e publicado no GitHub  
+
+---
+
+## 🧭 Próximos passos
+
+- Integração com dados reais do SIGAA  
+- Criação de API acadêmica dinâmica  
+- Sistema de autenticação seguro  
+- Melhorias avançadas de UI/UX  
+- Deploy em produção  
+- Expansão do dashboard com gráficos e estatísticas  
+
+---
 
 backend/
-├── backend/
-│ └── server.js
-├── package.json
-├── package-lock.json
-
 orion-dashboard/
-├── public/
-│ ├── favicon.svg
-│ ├── icons.svg
-├── src/
-│ ├── App.jsx
-│ ├── index.css
-│ ├── main.jsx
-│ ├── assets/
-│ └── components/
-├── package.json
-├── vite.config.js
-
 src/
-├── components/
-│ ├── dashboard/
-│ │ ├── StatsCards.tsx
-│ │ ├── TodaySubjects.tsx
-│ │ ├── WelcomeCard.tsx
-│ │ ├── *.css
-│ ├── layout/
-│ │ ├── Layout.tsx
-│ │ ├── TopBar.tsx
-│ ├── sidebar/
-│ │ ├── Sidebar.tsx
-│ │ ├── Sidebar.css
-│ ├── login/
-│ │ ├── LoginCard.tsx
-│ ├── ui/
-│ │ ├── Button.tsx
-│
-├── pages/
-│ └── Dashboard.tsx
-│
-├── types/
-│ └── disciplina.ts
-│
-├── assets/
-│ ├── logo-ifpa.png
-│ ├── hero.png
-│
-├── App.tsx
-├── main.tsx
-├── index.css
+public/
 
 
----
-
-## 📊 Funcionalidades já implementadas
-
-✔ Estrutura inicial completa do frontend React + TypeScript  
-✔ Dashboard com componentes base (cards, sidebar, layout)  
-✔ Organização de páginas e rotas iniciais  
-✔ Estrutura de backend Node.js criada  
-✔ Separação parcial de módulos (dashboard, layout, login)  
-✔ Sistema preparado para expansão para dados dinâmicos  
-✔ Projeto versionado com Git e enviado ao GitHub  
-
----
-
-## 🔗 Integração com GitHub
-
-O projeto foi:
-
-1. Inicializado localmente com Git
-2. Configurado com remote GitHub
-3. Commit inicial criado
-4. Enviado com sucesso para branch `main`
-
-Repositório atual:
-👉 https://github.com/devsolido/ifpa-orion
-
----
-
-## 📌 Estado Atual do Projeto
-
-🚧 **Fase atual: base estrutural concluída**
-
-O sistema atualmente possui:
-
-- Estrutura de frontend funcional
-- Backend inicial (API base)
-- Componentes visuais do dashboard
-- Organização de código modular
-- Integração com GitHub funcionando
-
-Ainda NÃO possui:
-
-- Autenticação
-- Integração real com SIGAA
-- API de dados acadêmicos reais
-- Deploy em produção
-
----
-
-## 🧭 Próximos Passos Planejados
-
-- [ ] Refatorar estrutura para padrão profissional (frontend/backend separados completamente)
-- [ ] Criar API mock de dados acadêmicos
-- [ ] Implementar autenticação futura baseada em sessão SIGAA
-- [ ] Tornar dashboard dinâmico (dados reais)
-- [ ] Melhorar UI/UX (design mais moderno)
-- [ ] Preparar deploy (Vercel / Render / Railway)
-- [ ] Adicionar gráficos e estatísticas acadêmicas
-
----
-
-## 🧠 Contexto para IA / Continuação do Projeto
-
-Este projeto é um sistema chamado **IFPA Orion**.
-
-Ele representa:
-
-- Um dashboard acadêmico alternativo ao SIGAA
-- Um sistema educacional moderno baseado em React
-- Um projeto em evolução contínua de software real
-- Uma base para integração futura com dados acadêmicos reais
-
-### Estado atual:
-- Estrutura inicial concluída
-- Código versionado no GitHub
-- Frontend funcional em desenvolvimento
-- Backend básico iniciado
-
-### Objetivo futuro:
-Transformar o sistema em uma plataforma acadêmica real, com integração segura ao SIGAA e visualização avançada de dados estudantis.
 
 ---
 
 ## 👨‍💻 Autor
 
-Igor Veras Morais  
-Projeto acadêmico em desenvolvimento contínuo
+<div align="center">
+
+# I.V.M
+
+## Igor Veras Morais
+
+_"Construindo sistemas que transformam dados em experiência."_
+
+</div>
 
 ---
 
-## 📌 Observação Final
+## 📌 Observação final
 
-Este projeto está em evolução constante e serve como base para aprendizado prático de:
+Este projeto está em constante evolução e representa uma jornada prática de desenvolvimento full stack, arquitetura de sistemas e experiência do usuário.
 
-- Desenvolvimento Full Stack
-- Arquitetura de sistemas
-- Integração com sistemas externos
-- UI moderna com React
-- Controle de versão profissional com Git
+---
+
+## 🛰️ IFPA ORION — I.V.M
+
+## 🛰️ Estrutura do projeto
