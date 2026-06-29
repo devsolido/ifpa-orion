@@ -22,6 +22,7 @@ function getDate() {
 
 export default function App() {
   const [disciplinas, setDisciplinas] = useState<Disciplina[]>([]);
+  const [nome, setNome] = useState("Estudante");
   const [loading, setLoading] = useState(true);
 
   const [hora, setHora] = useState(getTime());
@@ -35,6 +36,9 @@ export default function App() {
       const json = await res.json();
 
       setDisciplinas(json.disciplinas || []);
+      if (json.nomeAluno) {
+        setNome(json.nomeAluno);
+      }
     } catch (error) {
       console.error("Erro ao sincronizar:", error);
     } finally {
@@ -58,6 +62,7 @@ export default function App() {
   return (
     <Dashboard
       disciplinas={disciplinas}
+      nome={nome}
       loading={loading}
       hora={hora}
       data={data}

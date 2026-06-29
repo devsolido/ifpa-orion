@@ -90,4 +90,4 @@ export function LoginCard({ logo }: LoginCardProps) {
       </p>
     </div>
   );
-} '' 
+}

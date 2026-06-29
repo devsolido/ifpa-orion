@@ -2,9 +2,11 @@ import type { Disciplina } from "../types/disciplina";
 
 import WelcomeCard from "../components/dashboard/WelcomeCard";
 import StatsCards from "../components/dashboard/StatsCards";
+import TodaySubjects from "../components/dashboard/TodaySubjects";
 
 type DashboardProps = {
   disciplinas: Disciplina[];
+  nome: string;
   loading: boolean;
   hora: string;
   data: string;
@@ -22,8 +24,10 @@ const mapaDias: Record<number, string> = {
 
 export default function Dashboard({
   disciplinas,
+  nome,
   loading,
   data,
+  sincronizar,
 }: DashboardProps) {
   const horaAtual = new Date().getHours();
 
@@ -35,14 +39,15 @@ export default function Dashboard({
     saudacao = "Boa tarde";
   }
 
-  // Futuramente será obtido automaticamente do SIGAA
-  const nomeAluno = "Igor";
-
   const codigoHoje = mapaDias[new Date().getDay()] ?? "";
 
   const disciplinasHoje = disciplinas.filter((disciplina) =>
     disciplina.horario.startsWith(codigoHoje)
   );
+
+  const chatsOnline = disciplinas.filter(
+    (d) => d.chatStatus === "Online"
+  ).length;
 
   return (
     <div
@@ -52,8 +57,28 @@ export default function Dashboard({
         padding: "32px",
       }}
     >
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "16px" }}>
+        <button
+          onClick={sincronizar}
+          disabled={loading}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#38bdf8",
+            color: "#0f172a",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            cursor: loading ? "not-allowed" : "pointer",
+            opacity: loading ? 0.7 : 1,
+            transition: "0.2s",
+          }}
+        >
+          {loading ? "Sincronizando..." : "🔄 Sincronizar com SIGAA"}
+        </button>
+      </div>
+
       <WelcomeCard
-        nome={nomeAluno}
+        nome={nome}
         saudacao={saudacao}
         data={data}
         totalHoje={disciplinasHoje.length}
@@ -62,60 +87,19 @@ export default function Dashboard({
       <StatsCards
         totalDisciplinas={disciplinas.length}
         disciplinasHoje={disciplinasHoje.length}
-        chatsOnline={0}
+        chatsOnline={chatsOnline}
         atividades={0}
       />
 
-      <h2
-        style={{
-          marginBottom: "24px",
-          fontSize: "28px",
-        }}
-      >
-        📚 Disciplinas de Hoje
-      </h2>
-
-      {loading && (
-        <p>Carregando disciplinas...</p>
+      {loading ? (
+        <div style={{ textAlign: "center", padding: "40px" }}>
+          <p style={{ fontSize: "18px", color: "#94a3b8" }}>
+            🔄 Carregando dados do SIGAA...
+          </p>
+        </div>
+      ) : (
+        <TodaySubjects disciplinas={disciplinasHoje} />
       )}
-
-      {!loading && disciplinasHoje.length === 0 && (
-        <p>Você não possui disciplinas hoje.</p>
-      )}
-
-      {!loading &&
-        disciplinasHoje.map((disciplina) => (
-          <div
-            key={disciplina.nome}
-            style={{
-              background: "#111827",
-              border: "1px solid #1E293B",
-              borderRadius: "16px",
-              padding: "22px",
-              marginBottom: "18px",
-              transition: ".25s",
-              boxShadow: "0 10px 25px rgba(0,0,0,.20)",
-            }}
-          >
-            <h3
-              style={{
-                margin: 0,
-                marginBottom: "14px",
-                fontSize: "22px",
-              }}
-            >
-              {disciplina.nome}
-            </h3>
-
-            <p>📍 {disciplina.local}</p>
-
-            <p>🕒 {disciplina.horario}</p>
-
-            <p>
-              💬 <strong>{disciplina.chatStatus}</strong>
-            </p>
-          </div>
-        ))}
     </div>
   );
 }
